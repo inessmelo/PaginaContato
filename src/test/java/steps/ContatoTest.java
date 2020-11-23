@@ -4,13 +4,9 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.concurrent.TimeUnit;
 
-import javax.swing.text.Document;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 
@@ -35,7 +31,7 @@ public class ContatoTest {
 
 	@After
 	public void finalizar() {
-//		driver.quit();
+		driver.quit();
 	}
 
 	// não inserindo nenhum dado nos campos obrigatorios - ERRO
@@ -47,7 +43,7 @@ public class ContatoTest {
 
 	@Quando("clicar no botao Send")
 	public void clicarNoBotaoSend() {
-//		driver.findElement(By.id("submitMessage")).click();
+		driver.findElement(By.id("submitMessage")).click();
 	}
 
 	@Entao("aparece a mensagem de erro solicitando email")
@@ -95,39 +91,19 @@ public class ContatoTest {
 		driver.findElement(By.id("id_order")).sendKeys("RF0245N$8");	
 		
 		String caminho = "D:\\Documentos\\Trabalho\\SaveCash\\PaginaContatoAutomatizado\\target\\file\\ContatoSaveCash.txt";
-//		driver.findElement(By.id("uniform-fileUpload")).click();
 		JavascriptExecutor js = (JavascriptExecutor) driver;			
 		js.executeScript("document.querySelector(\"#uniform-fileUpload\").style.display=\"block\"");
-		driver.findElement(By.xpath("uniform-fileUpload")).sendKeys(caminho);
+		js.executeScript("document.querySelector(\"#fileUpload\").style.display=\"block\"");
+		driver.findElement(By.id("fileUpload")).clear();
+		driver.findElement(By.id("fileUpload")).sendKeys(caminho);
 		
-//		js.executeScript("document.querySelector(\"#fileUpload\").style=\"block\"");
-		
-		
-		js.executeScript("document.getElementsByClassName('filename').style='block'");
-//		WebElement textField = driver.findElement(By.xpath("//*[@id='uniform-fileUpload']/span[2]"));
-//		js.executeScript("document.querySelector(\"#textField\").style=\"block\"");
-		
-//		driver.findElement(By.id("uniform-fileUpload")).click();
-//		driver.findElement(By.xpath("//*[@id='uniform-fileUpload']/span[2]")).clear();
-		
-//		js.executeScript("document.querySelector(\"#uniform-fileUpload\").style.display=\"none\"");
-		
-		
-		
-//		js.executeScript("document.getElementoById('uniform-fileUpload').style.display='block'");
-//		driver.findElement(By.id("uniform-fileUpload")).click();
-//		driver.findElement(By.cssSelector("//*[@id='uniform-fileUpload']/span[1]")).sendKeys(caminho);
-		
-			
-		
-		
-//		driver.findElement(By.id("message")).sendKeys("Teste automatizado com Selenium WebDriver");
+		driver.findElement(By.id("message")).sendKeys("Teste automatizado com Selenium WebDriver");
 	}
 
 	@Entao("aparece a mensagem de sucesso")
 	public void apareceAMensagemDeSucesso() {
-//		String msg = driver.findElement(By.xpath("//*[@id='center_column']//p")).getText();
-//		assertEquals("Your message has been successfully sent to our team.", msg);
+		String msg = driver.findElement(By.xpath("//*[@id='center_column']//p")).getText();
+		assertEquals("Your message has been successfully sent to our team.", msg);
 	}
 
 }
