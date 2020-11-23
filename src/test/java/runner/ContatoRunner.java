@@ -11,8 +11,8 @@ import io.cucumber.junit.CucumberOptions.SnippetType;
 		features = "src/test/resources/features/contato.feature",
 		glue = "steps",
 		snippets = SnippetType.CAMELCASE,
-		tags = "@envioSucesso",
-		plugin = "pretty",
+		tags = "@contactUs",
+		plugin = {"pretty", "json:target/reports/CucumberReports.json"},
 		monochrome = true
 		)
 public class ContatoRunner {

@@ -90,10 +90,10 @@ public class ContatoTest {
 		driver.findElement(By.id("email")).sendKeys("testando@teste.com");
 		driver.findElement(By.id("id_order")).sendKeys("RF0245N$8");	
 		
-		String caminho = "D:\\Documentos\\Trabalho\\SaveCash\\PaginaContatoAutomatizado\\target\\file\\ContatoSaveCash.txt";
+		String caminho = "D:\\Documentos\\Trabalho\\SaveCash\\PaginaContatoAutomatizado\\target\\file\\Teste.txt";
 		JavascriptExecutor js = (JavascriptExecutor) driver;			
 		js.executeScript("document.querySelector(\"#uniform-fileUpload\").style.display=\"block\"");
-		js.executeScript("document.querySelector(\"#fileUpload\").style.display=\"block\"");
+//		js.executeScript("document.querySelector(\"#fileUpload\").style.display=\"block\"");
 		driver.findElement(By.id("fileUpload")).clear();
 		driver.findElement(By.id("fileUpload")).sendKeys(caminho);
 		
